@@ -2,9 +2,9 @@ use Mix.Config
 
 # Configure your database
 config :bookies, Bookies.Repo,
-  username: "bookies_phx",
-  password: "23skidoo",
-  database: "bookies_phx_dev",
+  username: "bookmarks",
+  password: "23skidoo..",
+  database: "bookmarks_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
