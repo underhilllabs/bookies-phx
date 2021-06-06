@@ -8,6 +8,7 @@ defmodule Bookies.Bookmark do
     field :private, :boolean, default: false
     field :title, :string
     field :url, :string
+    field :tags , Bookies.Tags
     belongs_to :user, Bookies.Accounts.User
 
     timestamps()
@@ -16,7 +17,7 @@ defmodule Bookies.Bookmark do
   @doc false
   def changeset(bookmark, attrs \\ %{}) do
     bookmark
-    |> cast(attrs, [:title, :url, :hashed_url, :description, :private])
+    |> cast(attrs, [:title, :url, :hashed_url, :description, :private, :tags])
     |> validate_required([:title, :url])
   end
 end

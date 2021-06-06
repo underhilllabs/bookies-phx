@@ -5,6 +5,7 @@ defmodule Bookies.Bookmarks do
 
   import Ecto.Query, warn: false
   alias Bookies.Repo
+  alias Bookies.Tags
   alias Bookies.Bookmarks.Bookmark
   def get_bookmark(id), do: Repo.get(Bookmark, id)
 
