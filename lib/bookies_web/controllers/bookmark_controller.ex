@@ -51,4 +51,13 @@ defmodule BookiesWeb.BookmarkController do
         render(conn, "new.html", changeset: changeset)
     end
   end
+
+  def delete(conn, %{"id" => id}) do
+    bookmark = Repo.get!(Bookmark, id)
+    Repo.delete!(bookmark)
+
+    conn
+    |> put_flash(:info, "Bookmark successfully deleted.")
+    |> redirect(to: Routes.bookmark_path(conn, :index))
+  end
 end
