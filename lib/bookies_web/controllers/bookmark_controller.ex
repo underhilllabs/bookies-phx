@@ -10,7 +10,7 @@ defmodule BookiesWeb.BookmarkController do
 
   def edit(conn, %{"id" => id}) do
     bookmark = Repo.get!(Bookmark, id)
-    changeset = Bookmark.changeset(bookmark)
+    changeset = Bookmark.changeset(bookmark, %{id: id} )
     render(conn, "edit.html", bookmark: bookmark, changeset: changeset)
   end
 
@@ -18,7 +18,7 @@ defmodule BookiesWeb.BookmarkController do
     changeset =
       conn.assigns.current_user
       |> Ecto.build_assoc(:bookmarks)
-      |> Bookmark.changeset(%{})
+      |> Bookmark.changeset()
     render(conn, "new.html", changeset: changeset)
   end
 
@@ -29,6 +29,20 @@ defmodule BookiesWeb.BookmarkController do
       |> Bookmark.changeset(bookmark_params)
 
     case Repo.insert(changeset) do
+      {:ok, _bookmark} ->
+        conn
+        |> put_flash(:info, "Bookmark successfully created.")
+        |> redirect(to: Routes.bookmark_path(conn, :index))
+      {:error, changeset} ->
+        render(conn, "new.html", changeset: changeset)
+    end
+  end
+
+  def update(conn, %{"id" => id, "bookmark" => bookmark_params}) do
+    bookmark = Repo.get!(Bookmark, id)
+    changeset = Bookmark.changeset(bookmark, bookmark_params)
+
+    case Repo.update(changeset) do
       {:ok, _bookmark} ->
         conn
         |> put_flash(:info, "Bookmark successfully created.")

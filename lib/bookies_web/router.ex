@@ -61,11 +61,11 @@ defmodule BookiesWeb.Router do
   scope "/", BookiesWeb do
     pipe_through [:browser, :require_authenticated_user]
 
-    get "/bookmarks/new", BookiesWeb.BookmarkController, :new
-    post "/bookmarks/:id", BookiesWeb.BookmarkController, :create
-    put "/bookmarks/:id", BookiesWeb.BookmarkController, :update
-    get "/bookmarks/:id", BookiesWeb.BookmarkController, :edit
-    delete "/bookmarks/:id", BookiesWeb.BookmarkController, :delete
+    get "/bookmarks/new", BookmarkController, :new
+    post "/bookmarks", BookmarkController, :create
+    put "/bookmarks/:id", BookmarkController, :update
+    get "/bookmarks/:id", BookmarkController, :edit
+    delete "/bookmarks/:id", BookmarkController, :delete
 
 
     get "/users/settings", UserSettingsController, :edit

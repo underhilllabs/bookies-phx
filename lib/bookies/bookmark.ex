@@ -14,7 +14,7 @@ defmodule Bookies.Bookmark do
   end
 
   @doc false
-  def changeset(bookmark, attrs) do
+  def changeset(bookmark, attrs \\ %{}) do
     bookmark
     |> cast(attrs, [:title, :url, :hashed_url, :description, :private])
     |> validate_required([:title, :url])

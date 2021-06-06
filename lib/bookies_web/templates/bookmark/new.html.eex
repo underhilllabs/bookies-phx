@@ -1,6 +1,6 @@
 <h2>New bookmark</h2>
 
-<%= render "form.html", changeset: @changeset, popup: false, tags: @tags,
+<%= render "form.html", changeset: @changeset, popup: false,
                         action: Routes.bookmark_path(@conn, :create) %>
 
 <%= link "Back", to: Routes.bookmark_path(@conn, :index) %>
