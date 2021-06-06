@@ -18,8 +18,7 @@ defmodule BookiesWeb.Router do
 
   scope "/", BookiesWeb do
     pipe_through :browser
-    get "/", PageController, :index
-    get "/bookmarks", BookmarkController, :index
+    get "/", BookmarkController, :index
   end
 
   # Other scopes may use custom stacks.
