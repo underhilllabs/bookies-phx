@@ -4,7 +4,7 @@ defmodule Bookies.User do
 
   schema "users" do
     field :email, :string
-    field :name, :string
+    has_many :bookmarks, Bookies.Bookmark
 
     timestamps()
   end
@@ -12,7 +12,7 @@ defmodule Bookies.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:name, :email])
-    |> validate_required([:name, :email])
+    |> cast(attrs, [:email])
+    |> validate_required([:email])
   end
 end
