@@ -17,6 +17,8 @@ defmodule Bookies.Tags do
   def dump(val) when is_list(val), do: {:ok, val}
   def dump(_), do: :error
 
-  def load(val) when is_list(val), do: {:ok, val}
+  def load(val) when is_list(val) do
+    {:ok, Enum.join(val, ", ") }
+  end
   def load(_), do: :error
 end
