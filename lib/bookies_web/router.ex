@@ -18,7 +18,6 @@ defmodule BookiesWeb.Router do
 
   scope "/", BookiesWeb do
     pipe_through :browser
-    get "/", BookmarkController, :index
   end
 
   # Other scopes may use custom stacks.
@@ -60,12 +59,7 @@ defmodule BookiesWeb.Router do
   scope "/", BookiesWeb do
     pipe_through [:browser, :require_authenticated_user]
 
-    get "/bookmarks/new", BookmarkController, :new
-    post "/bookmarks", BookmarkController, :create
-    put "/bookmarks/:id", BookmarkController, :update
-    get "/bookmarks/:id", BookmarkController, :edit
-    delete "/bookmarks/:id", BookmarkController, :delete
-
+    resources "/bookmarks", BookmarkController
 
     get "/users/settings", UserSettingsController, :edit
     put "/users/settings", UserSettingsController, :update
@@ -74,6 +68,7 @@ defmodule BookiesWeb.Router do
 
   scope "/", BookiesWeb do
     pipe_through [:browser]
+    get "/", BookmarkController, :index
 
     delete "/users/log_out", UserSessionController, :delete
     get "/users/confirm", UserConfirmationController, :new

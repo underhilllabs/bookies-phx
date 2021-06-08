@@ -15,6 +15,10 @@
   <%= email_input f, :email, required: true %>
   <%= error_tag f, :email %>
 
+  <%= label f, :username %>
+  <%= email_input f, :username, required: true %>
+  <%= error_tag f, :username %>
+
   <%= label f, :current_password, for: "current_password_for_email" %>
   <%= password_input f, :current_password, required: true, name: "current_password", id: "current_password_for_email" %>
   <%= error_tag f, :current_password %>

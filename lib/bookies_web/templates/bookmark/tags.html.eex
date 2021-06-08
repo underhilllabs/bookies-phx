@@ -1,3 +1,3 @@
-<%= for tag <- @tags do %>
-  <span class="tag"><a href="/tags/name/<%= tag %>"><%= tag %></a></span>
+<%= for tag <- String.split(@tags, ", ") do %>
+  <span class="tag text-yellow-600"><a href="/tags/name/<%= tag %>"><%= tag %></a></span>
 <% end %>
