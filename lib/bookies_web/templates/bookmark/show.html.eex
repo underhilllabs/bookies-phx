@@ -1,0 +1,1 @@
+<%= render "_bookmark.html", conn: @conn, bookmark: @bookmark, current_user: @current_user %>

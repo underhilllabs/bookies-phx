@@ -5,8 +5,9 @@ defmodule Bookies.Tags do
   def cast(nil), do: {:ok, nil} # if nil is valid to you
   def cast(str) when is_binary(str) do
     str
-    |> String.replace(~r/\s/, "") # remove all whitespace
-    |> String.split(",")
+    # |> String.replace(~r/\s/, "") # remove all whitespace
+    # |> String.split(",")
+    |> String.split(", ")
     |> cast
   end
   def cast(arr) when is_list(arr) do
@@ -18,7 +19,7 @@ defmodule Bookies.Tags do
   def dump(_), do: :error
 
   def load(val) when is_list(val) do
-    {:ok, Enum.join(val, ", ") }
+    {:ok, val }
   end
   def load(_), do: :error
 end

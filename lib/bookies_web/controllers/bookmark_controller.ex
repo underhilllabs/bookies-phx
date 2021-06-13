@@ -8,10 +8,16 @@ defmodule BookiesWeb.BookmarkController do
     render(conn, "index.html", bookmarks: bookmarks)
   end
 
+  def show(conn, %{"id" => id}) do
+    bookmark = Repo.get!(Bookmark, id) |> Repo.preload([:user])
+    render(conn, "show.html", bookmark: bookmark)
+  end
+
   def edit(conn, %{"id" => id}) do
     bookmark = Repo.get!(Bookmark, id)
+    tags = bookmark |> Map.get(:tags) |> Enum.join(", ")
     changeset = Bookmark.changeset(bookmark, %{id: id} )
-    render(conn, "edit.html", bookmark: bookmark, changeset: changeset)
+    render(conn, "edit.html", bookmark: bookmark, tags: tags, changeset: changeset)
   end
 
   def new(conn, _params) do

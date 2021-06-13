@@ -8,7 +8,8 @@ defmodule Bookies.Bookmark do
     field :private, :boolean, default: false
     field :title, :string
     field :url, :string
-    field :tags , Bookies.Tags
+    # field :tags , {:array, :string}
+    field :tags, Bookies.Tags
     belongs_to :user, Bookies.Accounts.User
 
     timestamps()

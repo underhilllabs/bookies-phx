@@ -1,4 +1,4 @@
-<div class="bookmark-wrapper bookmark private-<%= @bookmark.private %>">
+<div class="py-10 bookmark-wrapper bookmark private-<%= @bookmark.private %>">
     <div class="bookmark-title text-4xl text-blue-600"><a href="<%= @bookmark.url %>"><%= @bookmark.title %></a></div>
     <div class="bookmark-description"><%= @bookmark.description %></div>
     <div class="bookmark-tags"><%= render "tags.html", tags: @bookmark.tags %></div>
@@ -12,3 +12,5 @@
         <% end %>
     </div>
 </div>
+
+<hr />

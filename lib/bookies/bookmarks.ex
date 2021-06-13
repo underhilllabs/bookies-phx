@@ -14,4 +14,12 @@ defmodule Bookies.Bookmarks do
   def get_bookmarks do
     Repo.all(Bookmark)
   end
+
+  def get_bookmark_by(params) do
+    Repo.get_by(Bookmark, params)
+  end
+
+  def get_bookmark_by_tag(tag) do
+    Repo.all(from b in Bookmark, where: ^"#{tag}" in b.tags)
+  end
 end
